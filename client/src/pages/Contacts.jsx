@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Contacts.css'
+import './Contacts.css';
+
+const API_URL = import.meta.env.VITE_API_URL; // 🔹 Récupère l’URL du backend
 
 export default function Contacts({ token }) {
   const [contacts, setContacts] = useState([]);
@@ -14,7 +16,7 @@ export default function Contacts({ token }) {
   const [editPhone, setEditPhone] = useState('');
 
   const api = axios.create({
-    baseURL: 'http://localhost:5000/api/contacts',
+    baseURL: `${API_URL}/api/contacts`, // 🔹 API dynamique
     headers: { Authorization: `Bearer ${token}` },
   });
 
@@ -37,11 +39,15 @@ export default function Contacts({ token }) {
     e.preventDefault();
     try {
       await api.post('/', { firstName, lastName, phone });
-      setFirstName(''); setLastName(''); setPhone('');
+      setFirstName('');
+      setLastName('');
+      setPhone('');
       setMessage('Contact ajouté !');
       fetchContacts();
     } catch (err) {
-      setMessage(err.response?.data?.errors?.map(e => e.msg).join(', ') || 'Erreur');
+      setMessage(
+        err.response?.data?.errors?.map(e => e.msg).join(', ') || 'Erreur'
+      );
     }
   };
 
@@ -87,19 +93,39 @@ export default function Contacts({ token }) {
       <form onSubmit={handleAdd} className="mb-4">
         <div className="row g-2">
           <div className="col">
-            <input type="text" className="form-control" placeholder="Prénom"
-              value={firstName} onChange={e => setFirstName(e.target.value)} required />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Prénom"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
           </div>
           <div className="col">
-            <input type="text" className="form-control" placeholder="Nom"
-              value={lastName} onChange={e => setLastName(e.target.value)} required />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Nom"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
           </div>
           <div className="col">
-            <input type="text" className="form-control" placeholder="Téléphone"
-              value={phone} onChange={e => setPhone(e.target.value)} required />
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Téléphone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              required
+            />
           </div>
           <div className="col-auto">
-            <button type="submit" className="btn btn-success">Ajouter</button>
+            <button type="submit" className="btn btn-success">
+              Ajouter
+            </button>
           </div>
         </div>
       </form>
@@ -116,31 +142,46 @@ export default function Contacts({ token }) {
           </tr>
         </thead>
         <tbody>
-          {contacts.map(c => (
+          {contacts.map((c) => (
             <tr key={c._id}>
               {editingId === c._id ? (
                 <>
                   <td>
-                    <input type="text" className="form-control"
+                    <input
+                      type="text"
+                      className="form-control"
                       value={editFirstName}
-                      onChange={(e) => setEditFirstName(e.target.value)} />
+                      onChange={(e) => setEditFirstName(e.target.value)}
+                    />
                   </td>
                   <td>
-                    <input type="text" className="form-control"
+                    <input
+                      type="text"
+                      className="form-control"
                       value={editLastName}
-                      onChange={(e) => setEditLastName(e.target.value)} />
+                      onChange={(e) => setEditLastName(e.target.value)}
+                    />
                   </td>
                   <td>
-                    <input type="text" className="form-control"
+                    <input
+                      type="text"
+                      className="form-control"
                       value={editPhone}
-                      onChange={(e) => setEditPhone(e.target.value)} />
+                      onChange={(e) => setEditPhone(e.target.value)}
+                    />
                   </td>
                   <td>
                     <div className="action-buttons">
-                      <button className="btn btn-success btn-sm me-2" onClick={() => handleSave(c._id)}>
+                      <button
+                        className="btn btn-success btn-sm me-2"
+                        onClick={() => handleSave(c._id)}
+                      >
                         Sauvegarder
                       </button>
-                      <button className="btn btn-secondary btn-sm" onClick={() => setEditingId(null)}>
+                      <button
+                        className="btn btn-secondary btn-sm"
+                        onClick={() => setEditingId(null)}
+                      >
                         Annuler
                       </button>
                     </div>
@@ -153,10 +194,16 @@ export default function Contacts({ token }) {
                   <td>{c.phone}</td>
                   <td>
                     <div className="action-buttons">
-                      <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(c)}>
+                      <button
+                        className="btn btn-warning btn-sm me-2"
+                        onClick={() => handleEdit(c)}
+                      >
                         Modifier
                       </button>
-                      <button className="btn btn-danger btn-sm" onClick={() => handleDelete(c._id)}>
+                      <button
+                        className="btn btn-danger btn-sm"
+                        onClick={() => handleDelete(c._id)}
+                      >
                         Supprimer
                       </button>
                     </div>

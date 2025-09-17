@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL; // 🔹 Récupère l’URL du backend
+
 export default function Login({ onLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -9,7 +11,7 @@ export default function Login({ onLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', {
+      const res = await axios.post(`${API_URL}/api/auth/login`, { // 🔹 utilise API_URL
         email,
         password,
       });
