@@ -25,55 +25,23 @@
 
 ### Backend
 
-1. Se placer dans le dossier `server` :
+Le backend est déployé sur **Render** :  
+- URL : [https://projet-fil-rouge-mycontacts-1.onrender.com](https://projet-fil-rouge-mycontacts-1.onrender.com)  
+- Variables d’environnement à configurer sur Render :
+  - `PORT` : 10000
+  - `MONGO_URI` : <ton URI MongoDB>
+  - `JWT_SECRET` : <ton secret JWT>
 
-```bash
-cd server
-```
-
-2. Installer les dépendances :
-
-```bash
-npm install
-```
-
-3. Créer un fichier `.env` :
-
-```env
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/mycontacts
-JWT_SECRET=ton_secret
-```
-
-4. Lancer le serveur :
-
-```bash
-npm run dev
-```
-
-Le serveur écoute par défaut sur `http://localhost:5000`.
 
 ### Frontend
 
-1. Se placer dans le dossier `client` :
+Le frontend est déployé sur **Netlify** :  
+- URL : [https://jovial-profiterole-f921b8.netlify.app](https://jovial-profiterole-f921b8.netlify.app)  
+- Variable d’environnement à configurer sur Netlify :
+  - `VITE_API_URL` : `https://projet-fil-rouge-mycontacts-1.onrender.com`
 
-```bash
-cd client
-```
+Après configuration, le frontend communique avec le backend via l’URL définie dans `VITE_API_URL`.
 
-2. Installer les dépendances :
-
-```bash
-npm install
-```
-
-3. Lancer le frontend :
-
-```bash
-npm start
-```
-
-L'application sera disponible sur `http://localhost:3000`.
 
 ---
 
