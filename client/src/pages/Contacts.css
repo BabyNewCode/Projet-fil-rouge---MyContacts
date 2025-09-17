@@ -1,0 +1,140 @@
+.text-success {
+  color: forestgreen;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+form .col, form .col-auto {
+  flex: 1;
+  min-width: 120px;
+}
+
+input.form-control {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background-color: #2a2a2a;
+  color: #eee;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+input.form-control:focus {
+  border-color: red;
+  box-shadow: 0 0 8px #ff4c4c55;
+  outline: none;
+}
+
+/* Tableau Contacts */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.table th, .table td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #444;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+.table tr:hover {
+  background-color: #333;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  margin-block: 0.5rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Modifier */
+.btn-warning {
+  background-color: royalblue;
+  color: #fff;
+}
+
+.btn-warning:hover {
+  background-color: lightsteelblue;
+  box-shadow: 0 4px 12px rgba(81, 128, 170, 0.5);
+}
+
+/* Supprimer */
+.btn-danger {
+  background-color: darkred;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: red;
+  box-shadow: 0 4px 12px rgba(255, 76, 76, 0.5);
+}
+
+/* Sauvegarder */
+.btn-success {
+  background-color: green;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background-color: rgba(0, 255, 0, 0.747);
+  box-shadow: 0 4px 12px rgba(0, 204, 0, 0.5);
+}
+
+/* Annuler */
+.btn-secondary {
+  background-color: #555;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #777;
+  box-shadow: 0 4px 12px rgba(120, 120, 120, 0.5);
+}
+
+.table input {
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #555;
+  background-color: #2a2a2a;
+  color: #eee;
+  justify-content: center;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.table input:focus {
+  border-color: red;
+  box-shadow: 0 0 6px #ff4c4c55;
+  outline: none;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.1rem;
+  justify-content: flex-start;
+}
+
+header {
+  display: flex;
+  align-items: center;
+}

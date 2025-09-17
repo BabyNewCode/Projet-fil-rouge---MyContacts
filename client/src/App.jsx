@@ -25,11 +25,6 @@ function App() {
       {/* Header */}
       <header className="mb-4 d-flex justify-content-between align-items-center">
         <h1>MyContacts</h1>
-        {userToken && (
-          <button className="btn btn-danger" onClick={handleLogout}>
-            Déconnexion
-          </button>
-        )}
       </header>
 
       {/* Navigation */}
@@ -52,6 +47,15 @@ function App() {
         {page === 'login' && <Login onLogin={handleLogin} />}
         {page === 'contacts' && <Contacts token={userToken} />}
       </main>
+
+      {/* Footer avec Déconnexion */}
+      {userToken && (
+        <footer className="mt-4 text-center">
+          <button className="btn btn-danger" onClick={handleLogout}>
+            Déconnexion
+          </button>
+        </footer>
+      )}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import './Contacts.css'
 
 export default function Contacts({ token }) {
   const [contacts, setContacts] = useState([]);
@@ -55,7 +56,7 @@ export default function Contacts({ token }) {
     }
   };
 
-  // 🔹 Activer le mode édition
+  // 🔹 Modifier un contact
   const handleEdit = (contact) => {
     setEditingId(contact._id);
     setEditFirstName(contact.firstName);
@@ -135,12 +136,14 @@ export default function Contacts({ token }) {
                       onChange={(e) => setEditPhone(e.target.value)} />
                   </td>
                   <td>
-                    <button className="btn btn-success btn-sm me-2" onClick={() => handleSave(c._id)}>
-                      Sauvegarder
-                    </button>
-                    <button className="btn btn-secondary btn-sm" onClick={() => setEditingId(null)}>
-                      Annuler
-                    </button>
+                    <div className="action-buttons">
+                      <button className="btn btn-success btn-sm me-2" onClick={() => handleSave(c._id)}>
+                        Sauvegarder
+                      </button>
+                      <button className="btn btn-secondary btn-sm" onClick={() => setEditingId(null)}>
+                        Annuler
+                      </button>
+                    </div>
                   </td>
                 </>
               ) : (
@@ -149,12 +152,14 @@ export default function Contacts({ token }) {
                   <td>{c.lastName}</td>
                   <td>{c.phone}</td>
                   <td>
-                    <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(c)}>
-                      Modifier
-                    </button>
-                    <button className="btn btn-danger btn-sm" onClick={() => handleDelete(c._id)}>
-                      Supprimer
-                    </button>
+                    <div className="action-buttons">
+                      <button className="btn btn-warning btn-sm me-2" onClick={() => handleEdit(c)}>
+                        Modifier
+                      </button>
+                      <button className="btn btn-danger btn-sm" onClick={() => handleDelete(c._id)}>
+                        Supprimer
+                      </button>
+                    </div>
                   </td>
                 </>
               )}
